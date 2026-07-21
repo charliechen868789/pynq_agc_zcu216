@@ -20,6 +20,7 @@ This repository is compatible with [PYNQ images v2.7 and
 greater](https://github.com/Xilinx/PYNQ/releases) for the
 [Pynq-Z2](https://www.tul.com.tw/productspynq-z2.html),
 [ZCU111](https://www.xilinx.com/products/boards-and-kits/zcu111.html),
+[ZCU216](https://www.xilinx.com/products/boards-and-kits/zcu216.html),
 [RFSoC2x2](https://www.rfsoc-pynq.io/),
 and the
 [RFSoC4x2](https://www.rfsoc-pynq.io/).

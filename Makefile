@@ -2,16 +2,18 @@ IP_AAGC = ip/agc_analogue/ip/component.xml
 IP_DAGC = ip/agc_digital/ip/component.xml
 Z2_LOOPBACK = boards/Pynq-Z2/bin/agc_loopback.bit
 ZCU111_LOOPBACK = boards/ZCU111/bin/agc_loopback.bit
+ZCU216_LOOPBACK = boards/ZCU216/bin/agc_loopback.bit
 2x2_LOOPBACK = boards/RFSoC2x2/bin/agc_loopback.bit
 4x2_LOOPBACK = boards/RFSoC4x2/bin/agc_loopback.bit
 TARBALL = pynq_agc.tar.gz
 
 all : $(TARBALL)
 
-$(TARBALL): $(Z2_LOOPBACK) $(ZCU111_LOOPBACK) $(2x2_LOOPBACK) $(4x2_LOOPBACK)
+$(TARBALL): $(Z2_LOOPBACK) $(ZCU111_LOOPBACK) $(ZCU216_LOOPBACK) $(2x2_LOOPBACK) $(4x2_LOOPBACK)
 	tar -czf $(TARBALL) \
 	--exclude="boards/Pynq-Z2/prj_loopback" \
 	--exclude="boards/ZCU111/prj_loopback" \
+	--exclude="boards/ZCU216/prj_loopback" \
 	--exclude="boards/RFSoC2x2/prj_loopback" \
 	--exclude="boards/RFSoC4x2/prj_loopback" \
 	*
@@ -28,6 +30,9 @@ $(Z2_LOOPBACK): $(IP_DAGC)
 $(ZCU111_LOOPBACK): $(IP_DAGC)
 	make -C boards/ZCU111
 
+$(ZCU216_LOOPBACK): $(IP_DAGC)
+	make -C boards/ZCU216
+
 $(2x2_LOOPBACK): $(IP_DAGC)
 	make -C boards/RFSoC2x2
 
@@ -35,4 +40,4 @@ $(4x2_LOOPBACK): $(IP_DAGC)
 	make -C boards/RFSoC4x2
 
 clean:
-	rm $(TARBALL); make -C ip/agc_analogue clean; make -C ip/agc_digital clean; make -C boards/Pynq-Z2 clean; make -C boards/ZCU111 clean; make -C boards/RFSoC2x2 clean; make -C boards/RFSoC4x2 clean;
+	rm $(TARBALL); make -C ip/agc_analogue clean; make -C ip/agc_digital clean; make -C boards/Pynq-Z2 clean; make -C boards/ZCU111 clean; make -C boards/ZCU216 clean; make -C boards/RFSoC2x2 clean; make -C boards/RFSoC4x2 clean;
